@@ -60,21 +60,149 @@ document.addEventListener("DOMContentLoaded", () => {
     function dragEnd(){
         console.log(this.id, 'dragend')
         let validMoves = [
-            squareIdBeingDragged -1,
-            squareIdBeingDragged +1,
-            squareIdBeingDragged -width,
-            squareIdBeingDragged +width,
+            squareIdBeingDragged -2,
+            squareIdBeingDragged +2,
+            squareIdBeingDragged -width - 1, 
+            squareIdBeingDragged +width -1, 
+            squareIdBeingDragged -width + 1, 
+            squareIdBeingDragged +width + 1, 
+            squareIdBeingDragged + (width* 2), 
+            squareIdBeingDragged - (width * 2), 
         ]
-        let validMove = validMoves.includes(squareIdBeingReplaced)
-        if(squareIdBeingReplaced && validMove){
-            squareIdBeingReplaced = null
-            console.log(squareIdBeingReplaced)
-        }
-        else if(squareIdBeingReplaced && !validMove){
-            squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
-            squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
-        }
-        else squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+        for(let i = 0; i < 8; i++){
+            if(squareIdBeingDragged + 1 == squareIdBeingReplaced){
+                exception = [6, 14, 22, 30, 38, 46, 54, 62]
+                if(exception.includes(squareIdBeingDragged)){
+                    if(colorBeingDragged == squares[validMoves[4]].style.backgroundImage || colorBeingDragged == squares[validMoves[5]].style.backgroundImage){
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    }
+                    else{
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                        setTimeout(() => {
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                        },300)
+                        
+                    }
+                }
+                else if(colorBeingDragged == squares[validMoves[1]].style.backgroundImage || colorBeingDragged == squares[validMoves[4]].style.backgroundImage || colorBeingDragged == squares[validMoves[5]].style.backgroundImage){
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                }
+                else{
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    setTimeout(() => {
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                    },300)
+                    
+                }
+              }
+              else if(squareIdBeingDragged  == squareIdBeingReplaced + 1){
+                exception = [1, 9, 17, 25, 33, 41, 49, 57]
+                if(exception.includes(squareIdBeingDragged)){
+                    if(colorBeingDragged == squares[validMoves[2]].style.backgroundImage || colorBeingDragged == squares[validMoves[3]].style.backgroundImage){
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    }
+                    else{
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                        setTimeout(() => {
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                        },300)
+                        
+                    }
+                }
+
+                else if(colorBeingDragged == squares[validMoves[0]].style.backgroundImage || colorBeingDragged == squares[validMoves[2]].style.backgroundImage || colorBeingDragged == squares[validMoves[3]].style.backgroundImage){
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                }
+                else{
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    setTimeout(() => {
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                    },300)
+                    
+                }
+              }
+              else if(squareIdBeingDragged + width == squareIdBeingReplaced){
+                exception = [48, 49, 50, 51, 52, 53, 54, 55]
+                if(exception.includes(squareIdBeingDragged)){
+                    if(colorBeingDragged == squares[validMoves[3]].style.backgroundImage || colorBeingDragged == squares[validMoves[5]].style.backgroundImage){
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    }
+                    else{
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                        setTimeout(() => {
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                        },300)
+                        
+                    }
+                }
+               else if(colorBeingDragged == squares[validMoves[3]].style.backgroundImage || colorBeingDragged == squares[validMoves[5]].style.backgroundImage || colorBeingDragged == squares[validMoves[6]].style.backgroundImage){
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                }
+                else{
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    setTimeout(() => {
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                    },300)
+                    
+                }
+              }
+              else if(squareIdBeingDragged -  width == squareIdBeingReplaced){
+                exception = [6, 14, 22, 30, 38, 46, 54, 62]
+                if(exception.includes(squareIdBeingDragged)){
+                    if(colorBeingDragged == squares[validMoves[4]].style.backgroundImage || colorBeingDragged == squares[validMoves[2]].style.backgroundImage){
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    }
+                    else{
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                        setTimeout(() => {
+                        squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                        squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                        },300)
+                        
+                    }
+                }
+               else if(colorBeingDragged == squares[validMoves[2]].style.backgroundImage || colorBeingDragged == squares[validMoves[4]].style.backgroundImage || colorBeingDragged == squares[validMoves[7]].style.backgroundImage){
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                }
+                else{
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged
+                    setTimeout(() => {
+                    squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                    squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+                    },300)
+                    
+                }
+              }
+              else{
+                squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced
+                squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged
+              }
+
+            }
+        
+        
     }
     function dragStart(){
         console.log(this.id, 'dragstart')
@@ -95,6 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     let randomColor = Math.floor(Math.random()*candyColors.length)
                     squares[i].style.backgroundImage = candyColors[randomColor]
                 }
+            }
+            if(i < 8 && squares[i].style.backgroundImage === ''){
+                let randomColor = Math.floor(Math.random()*candyColors.length)
+                squares[i].style.backgroundImage = candyColors[randomColor]
             }
         }
     }
